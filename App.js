@@ -11,13 +11,15 @@ import {View} from "react-native";
 import FullReadMode from "./app/FullReadMode";
 import {setStatusBarBackgroundColor, StatusBar} from "expo-status-bar";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import IOSStatusBar from "./components/IOSStatusBar";
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+
 
 export default function App() {
     return (
         <SafeAreaProvider>
+            <IOSStatusBar />
             <NavigationContainer>
                 <Tab.Navigator
                     screenOptions={({ route }) => ({

@@ -3,40 +3,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Mail, Bookmark, Link2, Settings } from 'lucide-react-native';
-
-function AllMessages() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Barcha xabarlar!</Text>
-    </View>
-  );
-}
-
-function SavedMessages() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Saqlangan Xabarlar!</Text>
-    </View>
-  );
-}
-
-function AllLinks() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Havolalar!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Sozlamalar!</Text>
-    </View>
-  );
-}
-
 function MyTabBar({ state, descriptors, navigation }) {
   return (
     <View style={{ flexDirection: 'row', backgroundColor: '#1A2857', height: '5vh', alignItems: 'center' }}>

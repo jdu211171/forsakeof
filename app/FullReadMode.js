@@ -1,13 +1,14 @@
-import {View} from "react-native";
+import {View, Text} from "react-native";
+import React from 'react';
 
 export default function FullReadMode({ route }) {
-    const { message } = route.params;
+    const { title, message, time } = route.params.message;
 
     return (
         <View>
-            <Text>{message.title}</Text>
-            <Text>{message.message}</Text>
-            <Text>{message.time}</Text>
+            <Text>{title}</Text>
+            <Text>{message}</Text>
+            <Text>{time}</Text>
         </View>
     );
 }

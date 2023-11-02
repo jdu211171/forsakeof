@@ -1,15 +1,19 @@
 import React from 'react';
 import {View, Text, StyleSheet, Platform, TouchableOpacity} from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-const Notification = ({ title, message, time }) => {
+const Message = ({ title, message, time }) => {
     const navigation = useNavigation();
-
-    const handlePress = () => {
-            navigation.navigate('YourPageName', { message: message }); // replace 'YourPageName' with the name of the page you want to navigate to
+    handlePress = () => {
+        navigation.navigate('FullReadMode', {
+            message: {
+                title: title,
+                message: message,
+                time: time,
+            }
+        });
     };
-
     return (
         <TouchableOpacity onPress={handlePress}>
             <View style={[styles.container, styles.shadow]}>
@@ -79,4 +83,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default Notification;
+export default Message;
