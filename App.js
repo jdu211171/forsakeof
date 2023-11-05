@@ -19,7 +19,6 @@ const Tab = createBottomTabNavigator();
 export default function App() {
     return (
         <SafeAreaProvider>
-            <IOSStatusBar />
             <NavigationContainer>
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
@@ -37,7 +36,7 @@ export default function App() {
                             }
 
                             // You can return any component that you like here!
-                            return focused ? <View style={{ backgroundColor: "#fff", padding: 10, borderRadius: 22 }}><Ionicons name={iconName} size={size} color={color} /></View> : <Ionicons name={iconName} size={size} color={color} />;
+                            return focused ? <View style={{ backgroundColor: "#fff", padding: 10, width: 44, height: 44, borderRadius: 22 }}><Ionicons name={iconName} size={size} color={color} /></View> : <Ionicons name={iconName} size={size} color={color} />;
                         },
                         tabBarActiveTintColor: '#0251B2', // Changed active tint color to white
                         tabBarInactiveTintColor: '#fff', // Changed inactive tint color to white

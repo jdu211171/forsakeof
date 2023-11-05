@@ -1,21 +1,11 @@
-import React from 'react';
-import {View, Text, StyleSheet, Platform, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Platform, TouchableOpacity, Pressable} from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
 import {useNavigation} from '@react-navigation/native';
 
 const Message = ({ title, message, time }) => {
-    const navigation = useNavigation();
-    handlePress = () => {
-        navigation.navigate('FullReadMode', {
-            message: {
-                title: title,
-                message: message,
-                time: time,
-            }
-        });
-    };
+    let [state, setState] = useState(false);
     return (
-        <TouchableOpacity onPress={handlePress}>
             <View style={[styles.container, styles.shadow]}>
                 <View style={styles.flexing}>
                     <View style={styles.flexing}>
@@ -31,16 +21,17 @@ const Message = ({ title, message, time }) => {
                         />
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <Ionicons
-                        name={'bookmark-outline'}
-                        size={24}
-                        color={'gray'}
-                    />
+                    <TouchableOpacity onPress={() => setState(prevState => !prevState)}>
+                        <Ionicons
+                            name={state ? 'bookmark-outline' : 'bookmark'}
+                            size={24}
+                            color={'#0386D0'}
+                        />
+                    </TouchableOpacity>
                 </View>
                 <Text style={styles.message}>{message}</Text>
                 <Text style={styles.time}>{time}</Text>
             </View>
-        </TouchableOpacity>
     );
 };
 
