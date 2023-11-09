@@ -1,10 +1,10 @@
 import {Text, View} from "react-native";
 import * as React from "react";
 
-export default function BookmarksScreen() {
+export default function Links() {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Saqlangan xabarlar!</Text>
+            <Text>Barcha linklar!</Text>
         </View>
     );
 }

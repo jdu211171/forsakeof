@@ -2,16 +2,13 @@ import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MessagesScreen from "./app/MessagesScreen";
-import SettingsScreen from "./app/SettingsScreen";
-import BookmarksScreen from "./app/BookmarksScreen";
-import LinksScreen from "./app/LinksScreen";
+import Messages from "./app/messages";
+import Bookmarks from "./app/bookmarks";
+import Settings from "./app/settings";
+import Links from "./app/links";
+import Index from "./app/links";
 import {View} from "react-native";
-import FullReadMode from "./app/FullReadMode";
-import {setStatusBarBackgroundColor, StatusBar} from "expo-status-bar";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import IOSStatusBar from "./components/IOSStatusBar";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,7 +32,6 @@ export default function App() {
                                 iconName = focused ? 'settings' : 'settings-outline';
                             }
 
-                            // You can return any component that you like here!
                             return focused ? <View style={{ backgroundColor: "#fff", padding: 10, width: 44, height: 44, borderRadius: 22 }}><Ionicons name={iconName} size={size} color={color} /></View> : <Ionicons name={iconName} size={size} color={color} />;
                         },
                         tabBarActiveTintColor: '#0251B2', // Changed active tint color to white
@@ -54,7 +50,7 @@ export default function App() {
                 >
                     <Tab.Screen
                         name="Xabarlar"
-                        component={MessagesScreen}
+                        component={Messages}
                         options={{
                             tabBarBadge: 99,
                             tabBarBadgeStyle: {
@@ -64,9 +60,9 @@ export default function App() {
                             tabBarShowLabel: false,
                         }}
                     />
-                    <Tab.Screen options={{ tabBarShowLabel: false, }} name="Saqlanganlar" component={BookmarksScreen}/>
-                    <Tab.Screen options={{ tabBarShowLabel: false, }} name="Linklar" component={LinksScreen} />
-                    <Tab.Screen options={{ tabBarShowLabel: false, }} name="Sozlamalar" component={SettingsScreen} />
+                    <Tab.Screen options={{ tabBarShowLabel: false, }} name="Saqlanganlar" component={Bookmarks}/>
+                    <Tab.Screen options={{ tabBarShowLabel: false, }} name="Linklar" component={Links} />
+                    <Tab.Screen options={{ tabBarShowLabel: false, }} name="Sozlamalar" component={Settings} />
                 </Tab.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>
