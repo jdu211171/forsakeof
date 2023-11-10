@@ -61,7 +61,7 @@ export default function ModalView({ messageIconName, messageIconColor, messageTi
                         </View>
                         <TouchableOpacity onPress={() => setIconState(prevIconState => !prevIconState)}>
                             <Ionicons
-                                name={iconState ? 'bookmark-outline' : 'bookmark'}
+                                name={iconState ? 'bookmark' : 'bookmark-outline'}
                                 size={24}
                                 color={'#0386D0'}
                             />

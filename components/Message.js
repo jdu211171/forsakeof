@@ -11,8 +11,7 @@ const Message = ({ messageIconName, messageIconColor, messageTitle, messageText,
     }
     return (
         <>
-            <Pressable onPress={handleOpenModal}>
-                <View style={[styles.container, styles.shadow]}>
+                <Pressable onPress={handleOpenModal}  style={[styles.container, styles.shadow]}>
                     <View style={styles.flexing}>
                         <View style={styles.flexing}>
                             <Ionicons
@@ -29,7 +28,7 @@ const Message = ({ messageIconName, messageIconColor, messageTitle, messageText,
                         </View>
                         <TouchableOpacity style={{ width: 30, height: 30 }} onPress={() => setState(prevState => !prevState)}>
                             <Ionicons
-                                name={state ? 'bookmark-outline' : 'bookmark'}
+                                name={state ? 'bookmark' : 'bookmark-outline'}
                                 size={24}
                                 color={'#0386D0'}
                             />
@@ -37,7 +36,6 @@ const Message = ({ messageIconName, messageIconColor, messageTitle, messageText,
                     </View>
                     <Text style={styles.message}>{messageText}</Text>
                     <Text style={styles.time}>{date}</Text>
-                </View>
             </Pressable>
             {showModal &&
                 <ModalView
@@ -58,6 +56,8 @@ const Message = ({ messageIconName, messageIconColor, messageTitle, messageText,
 
 const styles = StyleSheet.create({
     container: {
+        width: '100%',
+        margin: 4,
         borderRadius: 4,
         padding: 10,
         rowGap: 8,

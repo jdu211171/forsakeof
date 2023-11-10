@@ -47,3 +47,50 @@ import {Ionicons} from "@expo/vector-icons";
         </View>
     </View>
 </Modal>
+
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import NetInfo from "@react-native-community/netinfo";
+
+const API_ENDPOINT = "https://api.example.com/messages";
+
+const MessagesComponent = () => {
+    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        // Subscribe to network state updates
+        const unsubscribe = NetInfo.addEventListener((state) => {
+            if (state.isConnected) {
+                // Fetch messages from the API
+                axios
+                    .get(API_ENDPOINT)
+                    .then(async (response) => {
+                        // Store messages in memory
+                        const messages = response.data.data;
+                        await AsyncStorage.setItem("messages", JSON.stringify(messages));
+
+                        // Set messages state
+                        setMessages(messages);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+        });
+
+        // Cleanup network state update subscription
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <ul>
+            {messages.map((message) => (
+                <li key={message.id}>{message.title}</li>
+            ))}
+        </ul>
+    );
+};
+
+export default MessagesComponent;
