@@ -1,12 +1,10 @@
-import {Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Modal, Platform, Pressable, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
 import React, {useState} from "react";
-import {SafeAreaProvider} from "react-native-safe-area-context";
-
 export default function ModalView({ messageIconName, messageIconColor, messageTitle, bookmarkIconState, bookmarkIconSetState, messageText, date, showModal, setShowModal }) {
     let [iconState, setIconState] = useState(bookmarkIconState);
     return (
-        <SafeAreaProvider>
+        <View>
             <Modal
                 animationType="none"
                 transparent={false}
@@ -25,11 +23,7 @@ export default function ModalView({ messageIconName, messageIconColor, messageTi
                                 bookmarkIconSetState(iconState);
                             }
                         }
-                        style={{ display: 'flex', position: 'absolute', left: 5, ...Platform.select({
-                                ios: {
-                                    paddingTop: 10,
-                                }
-                            })}}
+                        style={{ display: 'flex', position: 'absolute', left: 15, paddingTop: Platform.select({ ios: 30 })}}
                     >
                         <Ionicons
                             name={'arrow-back-outline'}
@@ -71,7 +65,7 @@ export default function ModalView({ messageIconName, messageIconColor, messageTi
                     <Text style={styles.time}>{date}</Text>
                 </View>
             </Modal>
-        </SafeAreaProvider>
+        </View>
     );
 }
 
@@ -79,15 +73,19 @@ const styles = StyleSheet.create({
     tabHeader: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: 'center',
+        justifyContent: Platform.select({
+            android: 'center',
+            ios: 'center'
+        }),
         alignItems: 'center',
         width: "100%",
-        height: 56,
+        height: Platform.select({
+            android: 56,
+            ios: 90,
+        }),
         backgroundColor: "#1A2857",
-        ...Platform.select({
-            ios: {
-                paddingTop: 10,
-            }
+        paddingTop: Platform.select({
+            ios: 30,
         })
     },
     container: {

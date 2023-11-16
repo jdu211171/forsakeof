@@ -12,7 +12,6 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 
-
 export default function App() {
     return (
         <SafeAreaProvider>
